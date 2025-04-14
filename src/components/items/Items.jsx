@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { data, stores } from "../../utils/temp";
 import { Pencil, Trash } from "lucide-react";
+import Navbar from "../nav/Navbar";
 
 const Items = () => {
   const [selectedItem, setSelectedItem] = useState(null);
@@ -62,6 +63,7 @@ const Items = () => {
 
   return (
     <>
+      <Navbar />
       <div className="overflow-x-auto m-4 rounded-md border border-gray-300">
         <div className="max-h-[calc(100vh-100px)] overflow-y-auto">
           <table className="min-w-full border-collapse rounded-md">
