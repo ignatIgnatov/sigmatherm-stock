@@ -96,7 +96,7 @@ const Items = () => {
               <tr className="bg-gray-100 sticky top-1 z-10">
                 <th colSpan={4}></th>
                 <th>
-                  <div className="border border-gray-200 rounded-md shadow-lg hover:bg-gray-200 hover:shadow-xl">
+                  <div className="border border-gray-200 rounded-md shadow-lg font-semibold hover:bg-gray-200 hover:shadow-xl">
                     <button onClick={handleRefreshAllStocks}>Обнови</button>
                   </div>
                 </th>
@@ -241,7 +241,7 @@ const Items = () => {
 
               {!editMode && (
                 <div className="w-full flex flex-row justify-end items-center px-6">
-                  <div className="p-1 px-6 border border-gray-300 rounded-lg shadow-md hover:bg-gray-300">
+                  <div className="p-1 px-6 border border-gray-300 rounded-lg shadow-md font-semibold hover:bg-gray-300">
                     <button onClick={handleRefreshAllStocks}>
                       Обнови наличност
                     </button>
