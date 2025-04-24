@@ -76,6 +76,12 @@ const Items = () => {
                   Продукт
                 </th>
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
+                  Доставчик
+                </th>
+                <th className="p-2 text-left font-semibold border-b border-gray-300">
+                  Базова цена
+                </th>
+                <th className="p-2 text-left font-semibold border-b border-gray-300">
                   Наличност
                 </th>
                 <th
@@ -86,7 +92,7 @@ const Items = () => {
                 </th>
               </tr>
               <tr className="bg-gray-100 sticky top-1 z-10">
-                <th colSpan={3}></th>
+                <th colSpan={5}></th>
                 {stores.map((store) => (
                   <th
                     key={store}
@@ -109,6 +115,12 @@ const Items = () => {
                   </td>
                   <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
                     {item.name}
+                  </td>
+                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
+                    {item.supplier}
+                  </td>
+                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
+                    {item.basePrice}
                   </td>
                   <td className="px-2 py-1 text-left text-sm border-t border-b border-gray-300">
                     {item.totalStock} бр.
@@ -177,29 +189,65 @@ const Items = () => {
               </label>
 
               <label className="w-full">
-                <span className="font-semibold">Наличност:</span>{" "}
+                <span className="font-semibold">Доставчик:</span>{" "}
                 {editMode ? (
                   <input
-                    type="number"
-                    value={editedItem.totalStock}
-                    onChange={(e) => handleChange(e, "totalStock")}
+                    type="text"
+                    value={editedItem.supplier}
+                    onChange={(e) => handleChange(e, "supplier")}
                     className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
                   />
                 ) : (
-                  <span>{selectedItem.totalStock} бр.</span>
+                  <span>{selectedItem.supplier}</span>
                 )}
               </label>
 
+              <div className="flex flex-row justify-between items-center w-full gap-8">
+                <label className="w-full">
+                  <span className="font-semibold">Базова цена:</span>{" "}
+                  {editMode ? (
+                    <input
+                      type="number"
+                      value={editedItem.basePrice}
+                      onChange={(e) => handleChange(e, "basePrice")}
+                      className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
+                    />
+                  ) : (
+                    <span>{selectedItem.basePrice}</span>
+                  )}
+                </label>
+
+                <label className="w-full">
+                  <span className="font-semibold">Наличност:</span>{" "}
+                  {editMode ? (
+                    <input
+                      type="number"
+                      value={editedItem.totalStock}
+                      onChange={(e) => handleChange(e, "totalStock")}
+                      className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
+                    />
+                  ) : (
+                    <span>{selectedItem.totalStock} бр.</span>
+                  )}
+                </label>
+              </div>
+
               <div className="mt-4 w-full">
                 <h3 className="font-semibold">Цени:</h3>
-                <ul className="ml-5">
+                <ul
+                  className={
+                    editMode
+                      ? "flex flex-row flex-wrap justify-between gap-6 items-center w-full"
+                      : "ml-4 flex flex-col gap-2"
+                  }
+                >
                   {stores.map((store) => (
-                    <li key={store} className="mb-2">
+                    <li key={store}>
                       {store}:{" "}
                       {editMode ? (
                         <input
                           type="number"
-                          value={editedItem.prices[store] || ""}
+                          value={editedItem.prices[store] || "-----"}
                           onChange={(e) => handlePriceChange(e, store)}
                           className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded p-1 w-24 outline-none"
                         />

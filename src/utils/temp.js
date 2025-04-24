@@ -11,6 +11,8 @@ export const data = [
   {
     id: 211202114,
     name: "Стоманен Панелен радиатор Airfel, 500/1000мм, 1975W",
+    supplier: "Име на доставчик",
+    basePrice: 1220,
     totalStock: 42,
     prices: {
       "eMag BG": 1200,
@@ -24,6 +26,8 @@ export const data = [
   {
     id: 211202109,
     name: "Стоманен Панелен радиатор Airfel, 500/2400мм, 4740W",
+    supplier: "Име на доставчик",
+    basePrice: 1180,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -37,6 +41,8 @@ export const data = [
   {
     id: 140720204,
     name: "Алуминиев радиатор ALL-THERM H350, 12 глидера, С включен монтажен комплект, Автоматичен и ръчен обезвъздушител, Конзоли, Термовентил",
+    supplier: "Име на доставчик",
+    basePrice: 1295,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -50,6 +56,8 @@ export const data = [
   {
     id: 230520202,
     name: "Градински маркуч Alpha, 50м, Двуслоен, Армиран, 5/8''",
+    supplier: "Име на доставчик",
+    basePrice: 1300,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -63,6 +71,8 @@ export const data = [
   {
     id: 211202114,
     name: "Стоманен Панелен радиатор Airfel, 500/1000мм, 1975W",
+    supplier: "Име на доставчик",
+    basePrice: 1180,
     totalStock: 42,
     prices: {
       "eMag BG": 1200,
@@ -76,6 +86,8 @@ export const data = [
   {
     id: 211202109,
     name: "Стоманен Панелен радиатор Airfel, 500/2400мм, 4740W",
+    supplier: "Име на доставчик",
+    basePrice: 1210,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -89,6 +101,8 @@ export const data = [
   {
     id: 140720204,
     name: "Алуминиев радиатор ALL-THERM H350, 12 глидера, С включен монтажен комплект, Автоматичен и ръчен обезвъздушител, Конзоли, Термовентил",
+    supplier: "Име на доставчик",
+    basePrice: 1150,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -102,6 +116,8 @@ export const data = [
   {
     id: 230520202,
     name: "Градински маркуч Alpha, 50м, Двуслоен, Армиран, 5/8''",
+    supplier: "Име на доставчик",
+    basePrice: 1000,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -115,6 +131,8 @@ export const data = [
   {
     id: 211202114,
     name: "Стоманен Панелен радиатор Airfel, 500/1000мм, 1975W",
+    supplier: "Име на доставчик",
+    basePrice: 1280,
     totalStock: 42,
     prices: {
       "eMag BG": 1200,
@@ -128,6 +146,8 @@ export const data = [
   {
     id: 211202109,
     name: "Стоманен Панелен радиатор Airfel, 500/2400мм, 4740W",
+    supplier: "Име на доставчик",
+    basePrice: 1230,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -141,6 +161,8 @@ export const data = [
   {
     id: 140720204,
     name: "Алуминиев радиатор ALL-THERM H350, 12 глидера, С включен монтажен комплект, Автоматичен и ръчен обезвъздушител, Конзоли, Термовентил",
+    supplier: "Име на доставчик",
+    basePrice: 1200,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -154,6 +176,8 @@ export const data = [
   {
     id: 230520202,
     name: "Градински маркуч Alpha, 50м, Двуслоен, Армиран, 5/8''",
+    supplier: "Име на доставчик",
+    basePrice: 1100,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -167,6 +191,8 @@ export const data = [
   {
     id: 211202114,
     name: "Стоманен Панелен радиатор Airfel, 500/1000мм, 1975W",
+    supplier: "Име на доставчик",
+    basePrice: 1250,
     totalStock: 42,
     prices: {
       "eMag BG": 1200,
@@ -180,6 +206,8 @@ export const data = [
   {
     id: 211202109,
     name: "Стоманен Панелен радиатор Airfel, 500/2400мм, 4740W",
+    supplier: "Име на доставчик",
+    basePrice: 1200,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -193,6 +221,8 @@ export const data = [
   {
     id: 140720204,
     name: "Алуминиев радиатор ALL-THERM H350, 12 глидера, С включен монтажен комплект, Автоматичен и ръчен обезвъздушител, Конзоли, Термовентил",
+    supplier: "Име на доставчик",
+    basePrice: 1280,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -206,6 +236,8 @@ export const data = [
   {
     id: 230520202,
     name: "Градински маркуч Alpha, 50м, Двуслоен, Армиран, 5/8''",
+    supplier: "Име на доставчик",
+    basePrice: 1220,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -219,6 +251,8 @@ export const data = [
   {
     id: 211202114,
     name: "Стоманен Панелен радиатор Airfel, 500/1000мм, 1975W",
+    supplier: "Име на доставчик",
+    basePrice: 1200,
     totalStock: 42,
     prices: {
       "eMag BG": 1200,
@@ -232,6 +266,8 @@ export const data = [
   {
     id: 211202109,
     name: "Стоманен Панелен радиатор Airfel, 500/2400мм, 4740W",
+    supplier: "Име на доставчик",
+    basePrice: 1320,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -245,6 +281,8 @@ export const data = [
   {
     id: 140720204,
     name: "Алуминиев радиатор ALL-THERM H350, 12 глидера, С включен монтажен комплект, Автоматичен и ръчен обезвъздушител, Конзоли, Термовентил",
+    supplier: "Име на доставчик",
+    basePrice: 1280,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
@@ -258,6 +296,8 @@ export const data = [
   {
     id: 230520202,
     name: "Градински маркуч Alpha, 50м, Двуслоен, Армиран, 5/8''",
+    supplier: "Име на доставчик",
+    basePrice: 1220,
     totalStock: 27,
     prices: {
       "eMag BG": 1350,
