@@ -37,6 +37,13 @@ const Navbar = () => {
         }`}
       >
         <button
+          className={getButtonClasses("/brands")}
+          onClick={() => navigate("/brands")}
+        >
+          Доставчици
+        </button>
+
+        <button
           className={getButtonClasses("/items")}
           onClick={() => navigate("/items")}
         >
@@ -49,7 +56,12 @@ const Navbar = () => {
         >
           Синхронизации
         </button>
-
+      </div>
+      <div
+        className={`flex-col sm:flex sm:flex-row gap-4 items-center sm:static absolute z-50 bg-gray-400 sm:bg-transparent top-16 left-0 w-full sm:w-auto px-4 py-4 sm:py-0 sm:px-0 transition-all duration-300 ease-in-out ${
+          menuOpen ? "flex" : "hidden"
+        }`}
+      >
         {jwt && (
           <button
             className={getButtonClasses("/")}
