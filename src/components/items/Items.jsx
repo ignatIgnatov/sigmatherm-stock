@@ -59,6 +59,8 @@ const Items = () => {
     setSelectedItem(null);
   };
 
+  const handleRefreshAllStocks = () => {};
+
   if (!data || data.length === 0) return <p>Няма данни за показване.</p>;
 
   return (
@@ -78,7 +80,7 @@ const Items = () => {
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
                   Доставчик
                 </th>
-                <th className="p-2 text-left font-semibold border-b border-gray-300">
+                <th className="p-2 text-center font-semibold border-b border-gray-300">
                   Базова цена
                 </th>
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
@@ -92,7 +94,12 @@ const Items = () => {
                 </th>
               </tr>
               <tr className="bg-gray-100 sticky top-1 z-10">
-                <th colSpan={5}></th>
+                <th colSpan={4}></th>
+                <th>
+                  <div className="border border-gray-200 rounded-md shadow-lg hover:bg-gray-200 hover:shadow-xl">
+                    <button onClick={handleRefreshAllStocks}>Обнови</button>
+                  </div>
+                </th>
                 {stores.map((store) => (
                   <th
                     key={store}
@@ -119,10 +126,10 @@ const Items = () => {
                   <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
                     {item.supplier}
                   </td>
-                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
+                  <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
                     {item.basePrice}
                   </td>
-                  <td className="px-2 py-1 text-left text-sm border-t border-b border-gray-300">
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300">
                     {item.totalStock} бр.
                   </td>
                   {stores.map((store) => (
@@ -231,6 +238,16 @@ const Items = () => {
                   )}
                 </label>
               </div>
+
+              {!editMode && (
+                <div className="w-full flex flex-row justify-end items-center px-6">
+                  <div className="p-1 px-6 border border-gray-300 rounded-lg shadow-md hover:bg-gray-300">
+                    <button onClick={handleRefreshAllStocks}>
+                      Обнови наличност
+                    </button>
+                  </div>
+                </div>
+              )}
 
               <div className="mt-4 w-full">
                 <h3 className="font-semibold">Цени:</h3>
