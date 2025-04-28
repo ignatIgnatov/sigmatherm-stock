@@ -83,9 +83,6 @@ const Items = () => {
                 <th className="p-2 text-center font-semibold border-b border-gray-300">
                   Базова цена
                 </th>
-                <th className="p-2 text-center font-semibold border-b border-gray-300">
-                  Физически магазин
-                </th>
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
                   Наличност
                 </th>
@@ -97,7 +94,7 @@ const Items = () => {
                 </th>
               </tr>
               <tr className="bg-gray-100 sticky top-1 z-10">
-                <th colSpan={5}></th>
+                <th colSpan={4}></th>
                 <th>
                   <div className="border border-gray-200 rounded-md shadow-lg font-semibold hover:bg-gray-200 hover:shadow-xl">
                     <button onClick={handleRefreshAllStocks}>Обнови</button>
@@ -106,7 +103,7 @@ const Items = () => {
                 {stores.map((store) => (
                   <th
                     key={store}
-                    className="px-3 py-2 text-center font-semibold border-b border-gray-300 whitespace-nowrap"
+                    className="px-3 py-2 text-center text-sm font-semibold border-b border-gray-300"
                   >
                     {store}
                   </th>
@@ -128,9 +125,6 @@ const Items = () => {
                   </td>
                   <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
                     {item.supplier}
-                  </td>
-                  <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
-                    {item.basePrice}
                   </td>
                   <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
                     {item.basePrice}

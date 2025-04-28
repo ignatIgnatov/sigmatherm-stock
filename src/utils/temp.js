@@ -1,4 +1,5 @@
 export const stores = [
+  "физически магазин",
   "eMag BG",
   "eMag RO",
   "eMag HUN",
@@ -15,6 +16,7 @@ export const data = [
     basePrice: 1220,
     totalStock: 42,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1200,
       "eMag RO": "",
       "eMag HUN": 1210,
@@ -30,6 +32,7 @@ export const data = [
     basePrice: 1180,
     totalStock: 27,
     prices: {
+      "физически магазин": 1300,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": "",
@@ -45,6 +48,7 @@ export const data = [
     basePrice: 1295,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -60,6 +64,7 @@ export const data = [
     basePrice: 1300,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -75,6 +80,7 @@ export const data = [
     basePrice: 1180,
     totalStock: 42,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1200,
       "eMag RO": "",
       "eMag HUN": 1210,
@@ -90,6 +96,7 @@ export const data = [
     basePrice: 1210,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": "",
@@ -105,6 +112,7 @@ export const data = [
     basePrice: 1150,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -120,6 +128,7 @@ export const data = [
     basePrice: 1000,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -135,6 +144,7 @@ export const data = [
     basePrice: 1280,
     totalStock: 42,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1200,
       "eMag RO": "",
       "eMag HUN": 1210,
@@ -150,6 +160,7 @@ export const data = [
     basePrice: 1230,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": "",
@@ -165,6 +176,7 @@ export const data = [
     basePrice: 1200,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -180,6 +192,7 @@ export const data = [
     basePrice: 1100,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -195,6 +208,7 @@ export const data = [
     basePrice: 1250,
     totalStock: 42,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1200,
       "eMag RO": "",
       "eMag HUN": 1210,
@@ -210,6 +224,7 @@ export const data = [
     basePrice: 1200,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": "",
@@ -225,6 +240,7 @@ export const data = [
     basePrice: 1280,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -240,6 +256,7 @@ export const data = [
     basePrice: 1220,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -255,6 +272,7 @@ export const data = [
     basePrice: 1200,
     totalStock: 42,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1200,
       "eMag RO": "",
       "eMag HUN": 1210,
@@ -270,6 +288,7 @@ export const data = [
     basePrice: 1320,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": "",
@@ -285,6 +304,7 @@ export const data = [
     basePrice: 1280,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
@@ -300,6 +320,7 @@ export const data = [
     basePrice: 1220,
     totalStock: 27,
     prices: {
+      "физически магазин": 1200,
       "eMag BG": 1350,
       "eMag RO": 1340,
       "eMag HUN": 1365,
