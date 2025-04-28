@@ -97,7 +97,7 @@ const Items = () => {
                 </th>
               </tr>
               <tr className="bg-gray-100 sticky top-1 z-10">
-                <th colSpan={4}></th>
+                <th colSpan={5}></th>
                 <th>
                   <div className="border border-gray-200 rounded-md shadow-lg font-semibold hover:bg-gray-200 hover:shadow-xl">
                     <button onClick={handleRefreshAllStocks}>Обнови</button>
