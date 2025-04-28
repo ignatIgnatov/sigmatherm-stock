@@ -83,6 +83,9 @@ const Items = () => {
                 <th className="p-2 text-center font-semibold border-b border-gray-300">
                   Базова цена
                 </th>
+                <th className="p-2 text-center font-semibold border-b border-gray-300">
+                  Физически магазин
+                </th>
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
                   Наличност
                 </th>
@@ -125,6 +128,9 @@ const Items = () => {
                   </td>
                   <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
                     {item.supplier}
+                  </td>
+                  <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
+                    {item.basePrice}
                   </td>
                   <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
                     {item.basePrice}
