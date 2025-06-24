@@ -1,5 +1,5 @@
 import React from "react";
-import { data, syncData } from "../../utils/temp";
+import { syncData } from "../../utils/temp";
 import Navbar from "../nav/Navbar";
 
 const Syncs = () => {

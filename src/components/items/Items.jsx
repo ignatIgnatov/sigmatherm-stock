@@ -1,13 +1,24 @@
-import React, { useState } from "react";
-import { data, stores } from "../../utils/temp";
+import React, { useEffect, useState } from "react";
+import { stores } from "../../utils/temp";
 import { Pencil, Trash } from "lucide-react";
 import Navbar from "../nav/Navbar";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchAllProducts } from "../../store/products/productSlice";
 
 const Items = () => {
+  const dispatch = useDispatch();
+  const { items, status } = useSelector((state) => state.products);
+
   const [selectedItem, setSelectedItem] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [editedItem, setEditedItem] = useState(null);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchAllProducts());
+    }
+  }, [status, dispatch]);
 
   const handleRowClick = (item) => {
     setSelectedItem(item);
@@ -61,7 +72,15 @@ const Items = () => {
 
   const handleRefreshAllStocks = () => {};
 
-  if (!data || data.length === 0) return <p>Няма данни за показване.</p>;
+  if (!items || items.length === 0)
+    return (
+      <>
+        <Navbar />
+        <div className="w-screen h-screen flex justify-center items-center">
+          <p>Няма данни за показване.</p>
+        </div>
+      </>
+    );
 
   return (
     <>
@@ -100,9 +119,9 @@ const Items = () => {
                     <button onClick={handleRefreshAllStocks}>Обнови</button>
                   </div>
                 </th>
-                {stores.map((store) => (
+                {stores.map((store, index) => (
                   <th
-                    key={store}
+                    key={index}
                     className="px-3 py-2 text-center text-sm font-semibold border-b border-gray-300"
                   >
                     {store}
@@ -111,35 +130,65 @@ const Items = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
+              {items.map((item) => (
                 <tr
-                  key={item.id}
+                  key={item?.id}
                   className="hover:bg-gray-50 hover:cursor-pointer"
                   onClick={() => handleRowClick(item)}
                 >
                   <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
-                    {item.id}
+                    {item?.id}
                   </td>
-                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
-                    {item.name}
-                  </td>
-                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300">
-                    {item.supplier}
+                  <td className="px-2 py-1 border-t text-sm border-b border-gray-300 max-w-[500px] truncate">
+                    {item?.name}
                   </td>
                   <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
-                    {item.basePrice}
+                    {item?.supplier?.name}
+                  </td>
+                  <td className="px-2 py-1 text-center border-t text-sm border-b border-gray-300">
+                    {item?.price?.basePrice || "---"}
                   </td>
                   <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300">
-                    {item.totalStock} бр.
+                    {item?.stock} бр.
                   </td>
-                  {stores.map((store) => (
+                  {/* {stores.map((store) => (
                     <td
                       key={store}
                       className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap"
                     >
                       {item.prices[store] ? item.prices[store] : "-----"}
                     </td>
-                  ))}
+                  ))} */}
+                  {/* Физически магазин */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {"-----"}
+                  </td>
+                  {/* eMag Bg */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.emagBgSalePrice).toFixed(2) || "-----"}
+                  </td>
+                  {/* eMag Ro */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.emagRoSalePrice).toFixed(2) || "-----"}
+                  </td>
+                  {/* eMag Hun */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.emagHuSalePrice).toFixed(2) || "-----"}
+                  </td>
+                  {/* scroutz.gr */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.skroutzSalePrice).toFixed(2) ||
+                      "-----"}
+                  </td>
+                  {/* bol.com */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.bolSalePrice).toFixed(2) || "-----"}
+                  </td>
+                  {/* magento */}
+                  <td className="px-2 py-1 text-center text-sm border-t border-b border-gray-300 whitespace-nowrap">
+                    {Number(item?.price?.magentoSalePrice).toFixed(2) ||
+                      "-----"}
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -148,7 +197,7 @@ const Items = () => {
       </div>
       {selectedItem && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md relative flex flex-col gap-4">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-lg relative flex flex-col gap-4">
             <div className="border-b border-gray-400 h-5 w-full">
               {!editMode && (
                 <div>
@@ -178,7 +227,7 @@ const Items = () => {
             <div className="flex flex-col justify-evenly items-start gap-2">
               <label>
                 <span className="font-semibold">ID:</span>{" "}
-                <span>{selectedItem.id}</span>
+                <span>{selectedItem?.id}</span>
               </label>
 
               <label className="w-full">
@@ -191,7 +240,7 @@ const Items = () => {
                     className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
                   />
                 ) : (
-                  <span>{selectedItem.name}</span>
+                  <span>{selectedItem?.name}</span>
                 )}
               </label>
 
@@ -200,12 +249,12 @@ const Items = () => {
                 {editMode ? (
                   <input
                     type="text"
-                    value={editedItem.supplier}
+                    value={editedItem?.supplier?.name}
                     onChange={(e) => handleChange(e, "supplier")}
                     className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
                   />
                 ) : (
-                  <span>{selectedItem.supplier}</span>
+                  <span>{selectedItem?.supplier?.name}</span>
                 )}
               </label>
 
@@ -215,12 +264,12 @@ const Items = () => {
                   {editMode ? (
                     <input
                       type="number"
-                      value={editedItem.basePrice}
+                      value={editedItem?.basePrice}
                       onChange={(e) => handleChange(e, "basePrice")}
                       className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
                     />
                   ) : (
-                    <span>{selectedItem.basePrice}</span>
+                    <span>{selectedItem?.basePrice || "---"}</span>
                   )}
                 </label>
 
@@ -229,12 +278,12 @@ const Items = () => {
                   {editMode ? (
                     <input
                       type="number"
-                      value={editedItem.totalStock}
+                      value={editedItem?.availability}
                       onChange={(e) => handleChange(e, "totalStock")}
                       className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded px-3 py-2 w-full outline-none"
                     />
                   ) : (
-                    <span>{selectedItem.totalStock} бр.</span>
+                    <span>{selectedItem?.availability} бр.</span>
                   )}
                 </label>
               </div>
@@ -264,12 +313,14 @@ const Items = () => {
                       {editMode ? (
                         <input
                           type="number"
-                          value={editedItem.prices[store] || "-----"}
+                          // value={editedItem.prices[store] || "-----"}
+                          value={"-----"}
                           onChange={(e) => handlePriceChange(e, store)}
                           className="border border-gray-300 focus:border-gray-400 focus:ring-0 rounded p-1 w-24 outline-none"
                         />
                       ) : (
-                        <span>{selectedItem.prices[store] || "-----"}</span>
+                        // <span>{selectedItem.prices[store] || "-----"}</span>
+                        <span>{"-----"}</span>
                       )}
                     </li>
                   ))}
