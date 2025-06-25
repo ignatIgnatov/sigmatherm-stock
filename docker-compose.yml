@@ -1,0 +1,10 @@
+services:
+  react-app:
+    image: ludogoriesoft/sigmatherm-ui
+    container_name: sigmatherm-ui
+    ports:
+      - "3000:80"
+    env_file:
+      - .env
+    volumes:
+      - ./src:/app/src

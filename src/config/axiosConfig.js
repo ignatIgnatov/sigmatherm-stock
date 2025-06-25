@@ -9,7 +9,6 @@ const api = axios.create({
   },
 });
 
-// Expose a setup function to inject the store
 export const setupInterceptors = (store) => {
   api.interceptors.request.use(
     (config) => {

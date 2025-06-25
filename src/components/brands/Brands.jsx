@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../nav/Navbar";
-import { brands as initialBrands } from "../../utils/temp";
 import { Check, X } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import Loader from "../components/Loader";
+import { fetchAllBrands } from "../../store/brands/brandSlice";
 
 const Brands = () => {
-  const [brandsData, setBrandsData] = useState(initialBrands);
+  const dispatch = useDispatch();
+  const { brands, status } = useSelector((state) => state.brands);
+  const [brandsData, setBrandsData] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [editRow, setEditRow] = useState(null);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchAllBrands());
+    }
+  }, [status, dispatch]);
+
+  useEffect(() => {
+    if (brands && brands.length > 0) {
+      setBrandsData(brands);
+    }
+  }, [dispatch, brands]);
 
   const handleRowClick = (index) => {
     setEditIndex(index);
@@ -29,6 +45,25 @@ const Brands = () => {
     setEditIndex(null);
     setEditRow(null);
   };
+
+  if (status === "loading") {
+    return (
+      <>
+        <Navbar />
+        <div className="w-screen h-screen flex justify-center items-center">
+          <Loader />
+        </div>
+      </>
+    );
+  } else if (!brands || brands.length === 0)
+    return (
+      <>
+        <Navbar />
+        <div className="w-screen h-screen flex justify-center items-center">
+          <p>Няма данни за показване.</p>
+        </div>
+      </>
+    );
 
   return (
     <div>
@@ -70,64 +105,64 @@ const Brands = () => {
                   <td className="px-2 py-1 border-t border-b border-gray-300">
                     {editIndex === index ? (
                       <input
-                        value={editRow.brand}
+                        value={editRow?.name}
                         onChange={(e) => handleChange(e, "brand")}
                         className="w-full border p-1"
                       />
                     ) : (
-                      item.brand
+                      item.name
                     )}
                   </td>
                   <td className="px-2 py-1 text-center border-t border-b border-gray-300">
                     {editIndex === index ? (
                       <input
                         type="number"
-                        value={editRow.standartPriceSurcharge}
+                        value={editRow?.priceMargin}
                         onChange={(e) =>
                           handleChange(e, "standartPriceSurcharge")
                         }
                         className="w-full border p-1 text-center"
                       />
                     ) : (
-                      `${item.standartPriceSurcharge} %`
+                      `${item?.priceMargin || "---"} %` || "---"
                     )}
                   </td>
                   <td className="px-2 py-1 text-center border-t border-b border-gray-300">
                     {editIndex === index ? (
                       <input
                         type="number"
-                        value={editRow.campaignDiscount}
+                        value={editRow?.campaignDiscount || 0}
                         onChange={(e) => handleChange(e, "campaignDiscount")}
                         className="w-full border p-1 text-center"
                       />
                     ) : (
-                      `${item.campaignDiscount} %`
+                      `${item?.campaignDiscount || "---"} %`
                     )}
                   </td>
                   <td className="px-2 py-1 text-center border-t border-b border-gray-300">
                     {editIndex === index ? (
                       <input
                         type="number"
-                        value={editRow.blackFridayDiscount}
+                        value={editRow?.blackFridayDiscount || 0}
                         onChange={(e) => handleChange(e, "blackFridayDiscount")}
                         className="w-full border p-1 text-center"
                       />
                     ) : (
-                      `${item.blackFridayDiscount} %`
+                      `${item.blackFridayDiscount || "---"} %`
                     )}
                   </td>
                   <td className="px-2 py-1 text-center border-t border-b border-gray-300">
                     {editIndex === index ? (
                       <input
                         type="number"
-                        value={editRow.springCampaignDiscount}
+                        value={editRow?.springCampaignDiscount || 0}
                         onChange={(e) =>
                           handleChange(e, "springCampaignDiscount")
                         }
                         className="w-full border p-1 text-center"
                       />
                     ) : (
-                      `${item.springCampaignDiscount} %`
+                      `${item.springCampaignDiscount || "---"} %`
                     )}
                   </td>
                   {editIndex === index && (

@@ -1,0 +1,13 @@
+# Ignore node_modules to keep the build context small
+node_modules
+
+# Ignore build output
+build
+
+# Ignore version control files
+.git
+.gitignore
+
+# Ignore logs and temporary files
+*.log
+tmp/
