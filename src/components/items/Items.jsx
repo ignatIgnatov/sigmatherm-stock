@@ -54,9 +54,9 @@ const Items = () => {
     setPageable((prev) => ({
       ...prev,
       page: 0,
-      search: debouncedSearchTerm.trim(),
+      search: searchTerm.trim(),
     }));
-  }, [debouncedSearchTerm]);
+  }, [searchTerm]);
 
   const handlePageChange = (newPage) => {
     setPageable((prev) => ({ ...prev, page: newPage }));
@@ -323,7 +323,7 @@ const Items = () => {
             onPageChange={handlePageChange}
           />
 
-          <SearchComponent onSearchChange={setSearchTerm} />
+          <SearchComponent value={searchTerm} onSearchChange={setSearchTerm} />
         </div>
         <div className="w-screen h-screen flex justify-center items-center">
           <p>Няма данни за показване.</p>
@@ -344,7 +344,7 @@ const Items = () => {
           onPageChange={handlePageChange}
         />
 
-        <SearchComponent onSearchChange={setSearchTerm} />
+        <SearchComponent value={searchTerm} onSearchChange={setSearchTerm} />
       </div>
 
       <div className="overflow-x-auto m-4 rounded-md border border-gray-300">

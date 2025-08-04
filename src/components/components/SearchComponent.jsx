@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 
-const SearchComponent = ({
-  initialValue = "",
-  onSearchChange,
-  minLength = 1,
-}) => {
-  const [searchQuery, setSearchQuery] = useState(initialValue);
+const SearchComponent = ({ value = "", onSearchChange, minLength = 1 }) => {
+  const [searchQuery, setSearchQuery] = useState(value);
+
+  useEffect(() => {
+    setSearchQuery(value);
+  }, [value]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -47,4 +47,4 @@ const SearchComponent = ({
   );
 };
 
-export default SearchComponent;
+export default React.memo(SearchComponent);
