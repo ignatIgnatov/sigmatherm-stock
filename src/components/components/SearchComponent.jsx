@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const SearchComponent = ({
   initialValue = "",
   onSearchChange,
-  minLength = 3,
+  minLength = 1,
 }) => {
   const [searchQuery, setSearchQuery] = useState(initialValue);
 
@@ -12,7 +12,7 @@ const SearchComponent = ({
       if (searchQuery.length >= minLength) {
         onSearchChange && onSearchChange(searchQuery);
       }
-    }, 300);
+    }, 500);
 
     return () => clearTimeout(handler);
   }, [searchQuery, minLength, onSearchChange]);

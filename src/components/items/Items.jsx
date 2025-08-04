@@ -314,6 +314,17 @@ const Items = () => {
     return (
       <>
         <Navbar />
+        <div className="m-4 flex justify-between items-center">
+          <PageSizeDropdown value={pageable.size} onChange={handleSizeChange} />
+
+          <Pagination
+            currentPage={pageable.page}
+            totalPages={pagination.totalPages}
+            onPageChange={handlePageChange}
+          />
+
+          <SearchComponent onSearchChange={setSearchTerm} />
+        </div>
         <div className="w-screen h-screen flex justify-center items-center">
           <p>Няма данни за показване.</p>
         </div>
@@ -326,7 +337,7 @@ const Items = () => {
 
       <div className="m-4 flex justify-between items-center">
         <PageSizeDropdown value={pageable.size} onChange={handleSizeChange} />
-        <div></div>
+
         <Pagination
           currentPage={pageable.page}
           totalPages={pagination.totalPages}
