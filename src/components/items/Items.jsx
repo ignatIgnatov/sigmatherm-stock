@@ -5,10 +5,23 @@ import Navbar from "../nav/Navbar";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../../store/products/productSlice";
 import Loader from "../components/Loader";
+import Pagination from "../components/Pagination";
+import PageSizeDropdown from "../components/PageSizeDropdown";
+import SearchComponent from "../components/SearchComponent";
 
 const Items = () => {
   const dispatch = useDispatch();
-  const { items, status } = useSelector((state) => state.products);
+  const { pagination, status } = useSelector((state) => state.products);
+  const items = pagination.content || [];
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState(searchTerm);
+  const [pageable, setPageable] = useState({
+    page: 0,
+    size: 10,
+    sort: "id,asc",
+    search: debouncedSearchTerm.trim(),
+  });
 
   const [selectedItem, setSelectedItem] = useState(null);
   const [editMode, setEditMode] = useState(false);
@@ -30,10 +43,35 @@ const Items = () => {
   });
 
   useEffect(() => {
-    if (status === "idle") {
-      dispatch(fetchAllProducts());
-    }
-  }, [status, dispatch]);
+    dispatch(fetchAllProducts(pageable));
+  }, [dispatch, pageable]);
+
+  useEffect(() => {
+    setDebouncedSearchTerm(searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    setPageable((prev) => ({
+      ...prev,
+      page: 0,
+      search: debouncedSearchTerm.trim(),
+    }));
+  }, [debouncedSearchTerm]);
+
+  const handlePageChange = (newPage) => {
+    setPageable((prev) => ({ ...prev, page: newPage }));
+  };
+
+  const handleSizeChange = (e) => {
+    setPageable((prev) => ({ ...prev, size: Number(e.target.value), page: 0 }));
+  };
+
+  const handleSortChange = (field) => {
+    const [currentField, currentDir] = pageable.sort.split(",");
+    const newDir =
+      currentField === field && currentDir === "asc" ? "desc" : "asc";
+    setPageable((prev) => ({ ...prev, sort: `${field},${newDir}`, page: 0 }));
+  };
 
   const validateField = (name, value) => {
     let error = "";
@@ -285,16 +323,35 @@ const Items = () => {
   return (
     <>
       <Navbar />
+
+      <div className="m-4 flex justify-between items-center">
+        <PageSizeDropdown value={pageable.size} onChange={handleSizeChange} />
+        <div></div>
+        <Pagination
+          currentPage={pageable.page}
+          totalPages={pagination.totalPages}
+          onPageChange={handlePageChange}
+        />
+
+        <SearchComponent onSearchChange={setSearchTerm} />
+      </div>
+
       <div className="overflow-x-auto m-4 rounded-md border border-gray-300">
         <div className="max-h-[calc(100vh-100px)] overflow-y-auto">
           <table className="min-w-full border-collapse rounded-md">
             <thead>
               <tr className="bg-gray-300 sticky top-0 z-10">
-                <th className="p-2 text-center font-semibold border-b border-gray-300">
-                  ID
+                <th onClick={() => handleSortChange("id")}>
+                  ID{" "}
+                  {pageable.sort.startsWith("id,") && (
+                    <span>{pageable.sort.endsWith("asc") ? "↑" : "↓"}</span>
+                  )}
                 </th>
-                <th className="p-2 text-left font-semibold border-b border-gray-300">
-                  Продукт
+                <th onClick={() => handleSortChange("name")}>
+                  Име{" "}
+                  {pageable.sort.startsWith("name,") && (
+                    <span>{pageable.sort.endsWith("asc") ? "↑" : "↓"}</span>
+                  )}
                 </th>
                 <th className="p-2 text-left font-semibold border-b border-gray-300">
                   Доставчик
