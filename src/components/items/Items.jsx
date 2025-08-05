@@ -305,6 +305,17 @@ const Items = () => {
     return (
       <>
         <Navbar />
+        <div className="m-4 flex justify-between items-center">
+          <PageSizeDropdown value={pageable.size} onChange={handleSizeChange} />
+
+          <Pagination
+            currentPage={pageable.page}
+            totalPages={pagination.totalPages}
+            onPageChange={handlePageChange}
+          />
+
+          <SearchComponent value={searchTerm} onSearchChange={setSearchTerm} />
+        </div>
         <div className="w-screen h-screen flex justify-center items-center">
           <Loader />
         </div>
@@ -383,9 +394,9 @@ const Items = () => {
               <tr className="bg-gray-100 sticky top-1 z-10">
                 <th colSpan={4}></th>
                 <th>
-                  <div className="border border-gray-200 rounded-md shadow-lg font-semibold hover:bg-gray-200 hover:shadow-xl">
+                  {/* <div className="border border-gray-200 rounded-md shadow-lg font-semibold hover:bg-gray-200 hover:shadow-xl">
                     <button onClick={handleRefreshAllStocks}>Обнови</button>
-                  </div>
+                  </div> */}
                 </th>
                 {stores.map((store, index) => (
                   <th
@@ -581,7 +592,7 @@ const Items = () => {
                 </label>
               </div>
 
-              {!editMode && (
+              {/* {!editMode && (
                 <div className="w-full flex flex-row justify-end items-center px-6">
                   <div className="p-1 px-6 border border-gray-300 rounded-lg shadow-md font-semibold hover:bg-gray-300">
                     <button onClick={handleRefreshAllStocks}>
@@ -589,7 +600,7 @@ const Items = () => {
                     </button>
                   </div>
                 </div>
-              )}
+              )} */}
 
               <div className="mt-4 w-full">
                 <h3 className="font-semibold">Цени:</h3>
