@@ -61,8 +61,8 @@ const productSlice = createSlice({
         } else {
           state.pagination = {
             content: action.payload.content,
-            page: action.payload.number,
-            size: action.payload.size,
+            page: action.payload.pageNumber,
+            size: action.payload.pageSize,
             totalPages: action.payload.totalPages,
             totalElements: action.payload.totalElements,
           };
